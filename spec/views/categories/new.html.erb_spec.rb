@@ -1,24 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe "categories/new", type: :view do
+RSpec.describe 'categories/new', type: :view do
   before(:each) do
     assign(:category, Category.new(
-      name: "MyString",
-      icon: "MyString",
-      User: nil
-    ))
+                        name: 'MyString',
+                        icon: 'MyString',
+                        User: nil
+                      ))
   end
 
-  it "renders new category form" do
+  it 'renders new category form' do
     render
 
-    assert_select "form[action=?][method=?]", categories_path, "post" do
+    assert_select 'form[action=?][method=?]', categories_path, 'post' do
+      assert_select 'input[name=?]', 'category[name]'
 
-      assert_select "input[name=?]", "category[name]"
+      assert_select 'input[name=?]', 'category[icon]'
 
-      assert_select "input[name=?]", "category[icon]"
-
-      assert_select "input[name=?]", "category[User_id]"
+      assert_select 'input[name=?]', 'category[User_id]'
     end
   end
 end
