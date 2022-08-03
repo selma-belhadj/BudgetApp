@@ -1,14 +1,11 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: %i[show destroy]
+  before_action :set_category, only: %i[destroy]
 
   # GET /categories or /categories.json
   def index
     @categories = current_user.categories
   end
-
-  # GET /categories/1 or /categories/1.json
-  def show; end
 
   # GET /categories/new
   def new
@@ -22,7 +19,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to category_url(@category), notice: 'Category was successfully created.' }
+        format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
