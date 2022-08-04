@@ -16,42 +16,43 @@ RSpec.describe '/categories', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Category. As you add validations to Category, be sure to
   # adjust the attributes here as well.
+  let(:user){ User.create!(name: 'Amira', email: 'amira@gmail.com', password: '123456') }
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      name: 'Food',
+      icon: 'food_url',
+      user_id: user.id
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      name: '',
+      icon: '',
+      user_id: ''
+    }
   end
 
   describe 'GET /index' do
-    it 'renders a successful response' do
-      Category.create! valid_attributes
-      get categories_url
-      expect(response).to be_successful
-    end
-  end
+    let(:user) { create(:user) }
+    let(:category) { create(:category, user: user) }
+    before(:each) do
+      get new_user_session_path
+      #sign_in(:user)
 
-  describe 'GET /show' do
+    end
+
     it 'renders a successful response' do
-      category = Category.create! valid_attributes
-      get category_url(category)
+      #Category.create! valid_attributes
+      get categories_path
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_category_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      category = Category.create! valid_attributes
-      get edit_category_url(category)
-      expect(response).to be_successful
+      get new_category_path
+      expect(response).to render_template(:new)
     end
   end
 
@@ -83,35 +84,6 @@ RSpec.describe '/categories', type: :request do
     end
   end
 
-  describe 'PATCH /update' do
-    context 'with valid parameters' do
-      let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
-      end
-
-      it 'updates the requested category' do
-        category = Category.create! valid_attributes
-        patch category_url(category), params: { category: new_attributes }
-        category.reload
-        skip('Add assertions for updated state')
-      end
-
-      it 'redirects to the category' do
-        category = Category.create! valid_attributes
-        patch category_url(category), params: { category: new_attributes }
-        category.reload
-        expect(response).to redirect_to(category_url(category))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        category = Category.create! valid_attributes
-        patch category_url(category), params: { category: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
 
   describe 'DELETE /destroy' do
     it 'destroys the requested category' do
