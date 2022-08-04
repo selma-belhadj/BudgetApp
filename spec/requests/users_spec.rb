@@ -39,7 +39,6 @@ RSpec.describe '/users', type: :request do
     end
   end
 
-
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'create User' do

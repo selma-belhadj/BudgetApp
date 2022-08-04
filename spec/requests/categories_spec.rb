@@ -16,7 +16,7 @@ RSpec.describe '/categories', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Category. As you add validations to Category, be sure to
   # adjust the attributes here as well.
-  let(:user){ User.create!(name: 'Amira', email: 'amira@gmail.com', password: '123456') }
+  let(:user) { User.create!(name: 'Amira', email: 'amira@gmail.com', password: '123456') }
   let(:valid_attributes) do
     {
       name: 'Food',
@@ -35,15 +35,14 @@ RSpec.describe '/categories', type: :request do
 
   describe 'GET /index' do
     let(:user) { create(:user) }
-    let(:category) { create(:category, user: user) }
+    let(:category) { create(:category, user:) }
     before(:each) do
       get new_user_session_path
-      #sign_in(:user)
-
+      # sign_in(:user)
     end
 
     it 'renders a successful response' do
-      #Category.create! valid_attributes
+      # Category.create! valid_attributes
       get categories_path
       expect(response).to be_successful
     end
@@ -83,7 +82,6 @@ RSpec.describe '/categories', type: :request do
       end
     end
   end
-
 
   describe 'DELETE /destroy' do
     it 'destroys the requested category' do
