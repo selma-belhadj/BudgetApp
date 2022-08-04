@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(_resource)
     categories_path
   end
+
   def configure_permitted_parameters
     attributes = %i[name email password]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
