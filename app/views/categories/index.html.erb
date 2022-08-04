@@ -1,13 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Categories</h1>
-
+<div>
+  <h2> Total amount for categories</h2>
+  <%= current_user.total_amount %>
+</div>
 <div id="categories">
   <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
+    <div class="category" style="border: 1px solid #2E2F30 ">
+      <%= link_to category_deals_path(category) do %>
+        <%= render category %>
+    <%end  %>
+    </div>
   <% end %>
 </div>
 
