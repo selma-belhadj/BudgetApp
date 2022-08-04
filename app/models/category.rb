@@ -4,4 +4,12 @@ class Category < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :user_id, presence: true
+
+  def total_amount
+    sum = 0
+    deals.each do |deal|
+      sum += deal.amount
+    end
+    sum
+  end
 end

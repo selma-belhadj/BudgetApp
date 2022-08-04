@@ -5,6 +5,9 @@
 <div id="deals">
   <div>
     <h3> Total of deals </h3>
+    <div>
+      <%= @category.total_amount %>
+    </div>
   </div>
   <div>
     <% @deals.each do |deal| %>
