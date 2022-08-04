@@ -1,5 +1,8 @@
 <h1>Categories</h1>
-
+<div>
+  <h2> Total amount for categories</h2>
+  <%= current_user.total_amount %>
+</div>
 <div id="categories">
   <% @categories.each do |category| %>
     <div class="category" style="border: 1px solid #2E2F30 ">
