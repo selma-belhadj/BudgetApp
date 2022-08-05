@@ -1,11 +1,12 @@
-<div id="<%= dom_id category %>">
-  <p>
-    <strong>Name:</strong>
-    <%= category.name %>
-  </p>
-
-  <p>
-    <strong>Icon:</strong>
-    <%= category.icon %>
-  </p>
+<div class="card">
+  <%= image_tag category.icon, class: "card-img-category mt-2" %>
+  <div class="card-body">
+    <p class="card-text">
+      <span class="category_name"><%= category.name %></span>
+    </p>
+    <div class="d-flex">
+      <%= link_to "Show", category_deals_path(category), class: "btn btn-link" %>
+    <%= button_to "Delete", category_path(category), method: :delete,  class: "btn btn-link text-danger classified-button" %>
+    </div>
+  </div>
 </div>

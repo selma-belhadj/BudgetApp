@@ -11,16 +11,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+ <div class="login_form">
+  <div class="mb-4">
+    <%= form.text_field :name, class: "form-control", placeholder: "Expense Name"  %>
   </div>
 
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
+  <div class="mb-4">
+    <%= form.text_field :amount, class: "form-control", placeholder: "Amount "  %>
   </div>
   <div>
-    <%= form.submit %>
+    <span  class="d-grid gap-2"> 
+      <%= form.submit "Save", class: "btn btn-outline-success" %>
+  </span>
   </div>
+</div>
 <% end %>
+

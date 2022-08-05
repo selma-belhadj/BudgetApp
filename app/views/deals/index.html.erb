@@ -1,18 +1,37 @@
-<%= link_to "<<<", categories_path %>
-<h1>Deals for Category <%= @category.name %> </h1>
-<%= link_to "New deal", new_category_deal_path(@category) %>
-
-<div id="deals">
-  <div>
-    <h3> Total of deals </h3>
-    <div>
-      <%= @category.total_amount %>
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>
+          <span>
+            <%= link_to '', categories_path , class: 'fa fa-angle-left back-link mr-4' %>
+            <%= image_tag @category.icon, class: "expense-title-image" %>
+            <%= @category.name %> Expenses
+          </span>
+          <span class="smallackwoleadge"> 
+            <i class="fa fa-power-off logout_icon"></i> 
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link smallackwoleadge" %>
+          </span>
+        </h1>
+      </div>
     </div>
   </div>
-  <div>
+</header>
+
+
+<div>
+  <div class="expense-card-long my-3 mx-2">
+    <h2 class="px-2"> Total amount: <span class="pull-right"><%= @category.total_amount %> USD</span> </h2>
     <% @deals.each do |deal| %>
+     <div class="card">
       <%= render deal %>
+      </div>
     <% end %>
   </div>
 </div>
 
+
+<div class="d-grid gap-1 mx-auto">
+  <%= link_to "New Expense", new_category_deal_path(@category), class: "btn btn-primary p-3 text-white btn-lg" %>
+</div>
+</div>

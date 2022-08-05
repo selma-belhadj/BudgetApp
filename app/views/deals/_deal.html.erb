@@ -1,12 +1,5 @@
-<div id="<%= dom_id deal %>">
-  <p>
-    <strong>Name:</strong>
-    <%= deal.name %>
-  </p>
-
-  <p>
-    <strong>Amount:</strong>
-    <%= deal.amount %>
-  </p>
-
+<div class="card-body d-flex">
+    <p><%= deal.name %> <br> <%= deal.created_at.strftime("%B %d, %Y") %> </p>
+   <p class="classified-expenses">$<%= deal.amount %></p>
+    <%= button_to "Delete", category_deal_path(@category ,deal), method: :delete,  class: "btn btn-link text-danger classified-button" %>
 </div>

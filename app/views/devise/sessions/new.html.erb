@@ -1,26 +1,31 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="row">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>
+              <span><%= link_to '', root_path, class: 'fa fa-angle-left back-link' %> CASH APP</span>
+              <%= f.submit "Log In", class: "btn btn-link smallackwoleadge" %>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="login_form">
+    <div class="mb-4">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
     </div>
+
+    <div class="mb-4">
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password",  class: "form-control" %>
+    </div>
+
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  <%= link_to "Forgot your password ?", new_password_path(resource_name), class: "forgot-passowrd-link" %>
 
-<%= render "devise/shared/links" %>
+  </div>
+
+
+</div>

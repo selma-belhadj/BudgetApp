@@ -1,34 +1,43 @@
-<h2>Sign up</h2>
+<div class="row">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>
+              <span><%= link_to '', root_path, class: 'fa fa-angle-left back-link' %> CASH APP</span>
+              <%= f.submit "Register", class: "btn btn-link smallackwoleadge" %>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
   <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="login_form">
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
+  <div class="mb-4">
+    <%= f.text_field :name, autofocus: true, autocomplete: "email", placeholder: "Name", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="mb-4">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="mb-4">
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="mb-4">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm password ", class: "form-control" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+  </div>
+
+  </div>

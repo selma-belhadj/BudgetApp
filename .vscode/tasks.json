@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+    {
+        "label": "ERB formatter",
+        "type": "shell",
+        "command": "ext=$(echo ${file})  && if [ ${ext##*.} == erb ]; then htmlbeautifier ${file} ${file}; else echo 'Not an ERB file'; fi",
+        "presentation": {
+            "reveal": "never",
+            "panel": "new",
+            "echo": false
+           },
+        "group": {
+        "kind": "build",
+        "isDefault": true
+         }
+    }
+                ]
+    }
