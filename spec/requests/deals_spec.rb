@@ -16,41 +16,40 @@ RSpec.describe '/deals', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Deal. As you add validations to Deal, be sure to
   # adjust the attributes here as well.
+  let(:user) { User.create!(name: 'Amira', email: 'amira@gmail.com', password: '123456') }
+  let(:category) { Category.create!(name: 'Food', icon: 'https://cdn-icons-png.flaticon.com/512/706/706164.png', user_id: user.id) }
+
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      name: 'Apple',
+      amount: 100,
+      category:,
+      user:
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      name: '',
+      amount: '',
+      category: '',
+      user: ''
+    }
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
+      sign_in user
       Deal.create! valid_attributes
-      get deals_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /show' do
-    it 'renders a successful response' do
-      deal = Deal.create! valid_attributes
-      get deal_url(deal)
+      get category_deals_url(category)
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_deal_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      deal = Deal.create! valid_attributes
-      get edit_deal_url(deal)
+      sign_in user
+      get new_category_deal_path(category)
       expect(response).to be_successful
     end
   end
@@ -58,73 +57,49 @@ RSpec.describe '/deals', type: :request do
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new Deal' do
+        sign_in user
         expect do
-          post deals_url, params: { deal: valid_attributes }
+          post category_deals_path(category), params: { deal: valid_attributes }
         end.to change(Deal, :count).by(1)
       end
 
-      it 'redirects to the created deal' do
-        post deals_url, params: { deal: valid_attributes }
-        expect(response).to redirect_to(deal_url(Deal.last))
+      it 'redirects to the deals of that category' do
+        sign_in user
+        post category_deals_path(category), params: { deal: valid_attributes }
+        expect(response).to redirect_to(category_deals_path(category))
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new Deal' do
+        sign_in user
         expect do
-          post deals_url, params: { deal: invalid_attributes }
+          post category_deals_path(category), params: { deal: invalid_attributes }
         end.to change(Deal, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post deals_url, params: { deal: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe 'PATCH /update' do
-    context 'with valid parameters' do
-      let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
-      end
-
-      it 'updates the requested deal' do
-        deal = Deal.create! valid_attributes
-        patch deal_url(deal), params: { deal: new_attributes }
-        deal.reload
-        skip('Add assertions for updated state')
-      end
-
-      it 'redirects to the deal' do
-        deal = Deal.create! valid_attributes
-        patch deal_url(deal), params: { deal: new_attributes }
-        deal.reload
-        expect(response).to redirect_to(deal_url(deal))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        deal = Deal.create! valid_attributes
-        patch deal_url(deal), params: { deal: invalid_attributes }
-        expect(response).to be_successful
+        sign_in user
+        post category_deals_path(category), params: { deal: invalid_attributes }
+        expect(response).not_to be_successful
       end
     end
   end
 
   describe 'DELETE /destroy' do
     it 'destroys the requested deal' do
+      sign_in user
       deal = Deal.create! valid_attributes
       expect do
-        delete deal_url(deal)
+        delete category_deal_path(category, deal)
       end.to change(Deal, :count).by(-1)
     end
 
     it 'redirects to the deals list' do
+      sign_in user
       deal = Deal.create! valid_attributes
-      delete deal_url(deal)
-      expect(response).to redirect_to(deals_url)
+      delete category_deal_path(category, deal)
+      expect(response).to redirect_to(category_deals_path(category))
     end
   end
 end

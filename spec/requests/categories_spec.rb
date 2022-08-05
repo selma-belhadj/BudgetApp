@@ -20,7 +20,7 @@ RSpec.describe '/categories', type: :request do
   let(:valid_attributes) do
     {
       name: 'Food',
-      icon: 'food_url',
+      icon: 'https://cdn-icons-png.flaticon.com/512/706/706164.png',
       user_id: user.id
     }
   end
@@ -34,22 +34,17 @@ RSpec.describe '/categories', type: :request do
   end
 
   describe 'GET /index' do
-    let(:user) { create(:user) }
-    let(:category) { create(:category, user:) }
-    before(:each) do
-      get new_user_session_path
-      # sign_in(:user)
-    end
-
     it 'renders a successful response' do
-      # Category.create! valid_attributes
-      get categories_path
+      Category.create! valid_attributes
+      sign_in user
+      get '/categories'
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
+      sign_in user
       get new_category_path
       expect(response).to render_template(:new)
     end
@@ -58,33 +53,38 @@ RSpec.describe '/categories', type: :request do
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new Category' do
+        sign_in user
         expect do
           post categories_url, params: { category: valid_attributes }
         end.to change(Category, :count).by(1)
       end
 
-      it 'redirects to the created category' do
+      it 'redirects to the index category' do
+        sign_in user
         post categories_url, params: { category: valid_attributes }
-        expect(response).to redirect_to(category_url(Category.last))
+        expect(response).to redirect_to(categories_url)
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new Category' do
+        sign_in user
         expect do
           post categories_url, params: { category: invalid_attributes }
         end.to change(Category, :count).by(0)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
+      it "renders a unsuccessful response (i.e. to display the 'new' template)" do
+        sign_in user
         post categories_url, params: { category: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).not_to be_successful
       end
     end
   end
 
   describe 'DELETE /destroy' do
     it 'destroys the requested category' do
+      sign_in user
       category = Category.create! valid_attributes
       expect do
         delete category_url(category)
@@ -92,6 +92,7 @@ RSpec.describe '/categories', type: :request do
     end
 
     it 'redirects to the categories list' do
+      sign_in user
       category = Category.create! valid_attributes
       delete category_url(category)
       expect(response).to redirect_to(categories_url)
