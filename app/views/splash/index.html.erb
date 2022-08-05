@@ -1,15 +1,23 @@
-<div class="splash">
-  <div>
-    <h1>Splash page</h1>
+<section class="screen">
+  <div class="container">
+    <div class="row h-50">
+      <div class="col-md-12 splash-sections">
+        <h1 class="app-splash">
+          CashApp <br/>
+          <span class="smallackwoleadge">by Selma</span>
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 splash-sections-two">
+        <% if user_signed_in? %>
+          <%= link_to 'Get Started', categories_path, class: 'btn btn-success my-2 col-12' %>
+          <%= link_to 'SIGN OUT', destroy_user_session_path, method: :get, class: 'btn btn-default col-12 signout' %>
+        <% else %>
+          <%= link_to 'LOG IN', new_user_session_path, class: 'btn btn-primary my-2 col-12' %>
+          <%= link_to 'SIGN UP', new_user_registration_path, class: 'btn btn-default col-12 signup' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div>
-    <% if user_signed_in? %>
-      Signed in as <%= current_user.name %>. Not you?
-      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path %>
-      <%= link_to "sign in", new_user_session_path %>
-    <% end %>
-  </div>
-
-</div>
+</section>
