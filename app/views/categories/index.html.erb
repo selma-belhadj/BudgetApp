@@ -1,16 +1,27 @@
-<h1>Categories</h1>
-<div>
-  <h2> Total amount for categories</h2>
-  <%= current_user.total_amount %>
-</div>
-<div id="categories">
-  <% @categories.each do |category| %>
-    <div class="category" style="border: 1px solid #2E2F30 ">
-      <%= link_to category_deals_path(category) do %>
-        <%= render category %>
-    <%end  %>
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>
+          <span>Categories</span>
+          <span class="smallackwoleadge">
+            <i class="fa fa-power-off logout_icon"></i>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link smallackwoleadge" %>
+          </span>
+        </h1>
+      </div>
     </div>
+  </div>
+</header>
+<div class="expense-card-long my-3 mx-2">
+  <h2 class="px-2"> Total amount: <span class="pull-right"><%= current_user.total_amount %> USD</span> </h2>
+</div>
+<div class="expense-card my-3 mx-2">
+  <% @categories.each do |category| %>
+    <%= render category %>
   <% end %>
 </div>
 
-<%= link_to "New category", new_category_path %>
+<div class="d-grid gap-1 mx-auto">
+  <%= link_to "New category", new_category_path, class: "btn btn-primary p-3 text-white btn-lg" %>
+</div>
