@@ -64,7 +64,7 @@ RSpec.describe '/users', type: :request do
   describe 'DELETE /destroy' do
     it 'redirects to the root path' do
       User.create! valid_attributes
-      delete destroy_user_session_path
+      get destroy_user_session_path
       expect(response).to redirect_to(root_path)
     end
   end
