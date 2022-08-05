@@ -1,6 +1,6 @@
 class DealsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: %i[show destroy]
+  before_action :set_deal, only: %i[show destroy]
 
   # GET /deals or /deals.json
   def index
@@ -37,6 +37,10 @@ class DealsController < ApplicationController
   end
 
   private
+
+  def set_deal
+    @deal = current_user.deals.find(params[:id])
+  end
 
   # Only allow a list of trusted parameters through.
   def deal_params
