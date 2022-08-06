@@ -1,0 +1,27 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>
+          <span>Categories</span>
+          <span class="smallackwoleadge">
+            <i class="fa fa-power-off logout_icon"></i>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link smallackwoleadge" %>
+          </span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="expense-card-long my-3 mx-2">
+  <h2 class="px-2"> Total amount: <span class="pull-right"><%= current_user.total_amount %> USD</span> </h2>
+</div>
+<div class="expense-card my-3 mx-2">
+  <% @categories.each do |category| %>
+    <%= render category %>
+  <% end %>
+</div>
+
+<div class="d-grid gap-1 mx-auto">
+  <%= link_to "New category", new_category_path, class: "btn btn-primary p-3 text-white btn-lg" %>
+</div>

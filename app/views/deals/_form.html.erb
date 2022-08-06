@@ -1,0 +1,29 @@
+<%= form_with(model: deal, url: category_deals_path) do |form| %>
+  <% if deal.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+
+      <ul>
+        <% deal.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="login_form">
+  <div class="mb-4">
+    <%= form.text_field :name, class: "form-control", placeholder: "Expense Name"  %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.text_field :amount, class: "form-control", placeholder: "Amount "  %>
+  </div>
+  <div>
+    <span  class="d-grid gap-2"> 
+      <%= form.submit "Save", class: "btn btn-outline-success" %>
+  </span>
+  </div>
+</div>
+<% end %>
+

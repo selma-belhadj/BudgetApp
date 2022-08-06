@@ -1,0 +1,27 @@
+  <%= form_for @category, local: true do |f| %>
+  <div class="login_form">
+  <% if category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+      <div class="mb-4">
+        <%= f.text_field :name, class: "form-control", placeholder: "Category Name" %>
+      </div>
+      <div class="mb-4">
+        <%= f.text_field :icon, class: "form-control", placeholder: "Icon URL" %>
+      </div>
+      <div>
+    <span  class="d-grid gap-2"> 
+      <%= f.submit "Save", class: "btn btn-outline-success" %>
+  </span>
+  </div>
+    </div>
+  <% end %>

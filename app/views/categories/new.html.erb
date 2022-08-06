@@ -1,0 +1,16 @@
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>  
+              <span><%= link_to '', categories_path , class: 'fa fa-angle-left back-link mr-4' %> New Category</span>
+<span class="smallackwoleadge"> 
+            <i class="fa fa-power-off logout_icon"></i> 
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link smallackwoleadge" %>
+          </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  <%= render "form", category: @category %>
