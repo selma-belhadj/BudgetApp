@@ -6,7 +6,9 @@
 
 # .gitignore
 node_modules/
-
+.DS_Store
+.vscode/ 
+.idea   
 # Ignore bundler config.
 /.bundle
 
