@@ -9,6 +9,8 @@ This Ruby on Rails application allows the user to:
 * introduce new transactions associated with a category.
 * see the money spent on each category.
 
+## [Live Demo](https://afternoon-anchorage-61931.herokuapp.com/)
+
 ## Getting Started
 - clone the repository
   `git clone https://github.com/selma-belhadj/BudgetApp.git`
