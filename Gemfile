@@ -59,7 +59,7 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # Speed up commands on slow machines / big apps [https://g/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlithub.com/rails/spring]
   # gem "spring"
 end
 
@@ -73,3 +73,5 @@ end
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'devise', '~> 4.8'
+
+gem 'rack-cors'
