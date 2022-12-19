@@ -1,6 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> This project is The Ruby on Rails capstone project which is about building a mobile web application where the user can manage his budget: 
+> This project is The Ruby on Rails capstone project which is about building a mobile web application where the user can manage his budget:
+![screenshot](./app/assets/images/image-cashapp.png)
+
 he can have a list of transactions associated with a category, so that he can see how much money you spent and on what.
 
 This Ruby on Rails application allows the user to:
@@ -8,6 +10,8 @@ This Ruby on Rails application allows the user to:
 * register and log in, so that the data is private to them.
 * introduce new transactions associated with a category.
 * see the money spent on each category.
+
+## [Live Demo](https://afternoon-anchorage-61931.herokuapp.com/)
 
 ## Getting Started
 - clone the repository
@@ -34,7 +38,7 @@ This Ruby on Rails application allows the user to:
 👤 **Selma Belhadj**
 
 - GitHub: [@selma-belhadj](https://github.com/selma-belhadj)
-- Twitter: [@Bel_Selma16](https://twitter.com/Bel_Selma16)
+- Twitter: [@selma_bel_hadj](https://twitter.com/selma_bel_hadj)
 - LinkedIn: [@selma-belhadj](https://www.linkedin.com/in/selma-belhadj/)
 
 ## 🤝 Contributing
