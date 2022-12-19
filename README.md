@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 > This project is The Ruby on Rails capstone project which is about building a mobile web application where the user can manage his budget:
-![screenshot](./app/assets/images/image-cashapp.png)
+![screenshot](./app/assets/images/portfolio6.png)
 
 he can have a list of transactions associated with a category, so that he can see how much money you spent and on what.
 
@@ -11,7 +11,7 @@ This Ruby on Rails application allows the user to:
 * introduce new transactions associated with a category.
 * see the money spent on each category.
 
-## [Live Demo](https://afternoon-anchorage-61931.herokuapp.com/)
+## [Live Demo](https://cash-app-dz.onrender.com/)
 
 ## Getting Started
 - clone the repository
